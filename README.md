@@ -1,6 +1,4 @@
 # ISPConfig-DynDNS
-Dynamic DNS for ISPConfig
-
 Create your own dynamic DNS on ISPConfig
 
 # Installation

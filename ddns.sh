@@ -1,5 +1,5 @@
 #!/bin/bash
-ddns_user="dyndns"
+ddns_user="ddns"
 ddns_pass="password"
 dns=8.8.8.8
 domain=$(dnsdomainname)

@@ -118,7 +118,8 @@ try {
         //$log->debug('Login OK. Session ID = ' . $session_id);
         $dns_records = $client->dns_rr_get_all_by_zone($session_id, $zone_id);
 
-        if ($record_id = array_search($host, array_column($dns_records, 'name'))) {
+        $record_id = array_search($host, array_column($dns_records, 'name'));
+        if (false !== $record_id) {
             //$log->debug('Record found : ' . print_r($dns_records[$record_id], true));
             if ($dns_records[$record_id]['type'] != 'A') {
                 //$log->debug("Not A record!");

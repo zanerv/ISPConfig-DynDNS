@@ -85,16 +85,23 @@ if (in_array($host, $exceptions))
     die('Must specify a valid host');
 
 // Use server value for IP if none was specified
-$ip = $_GET['myip'];
-if (empty($ip))
+if (empty($_GET['myip'])) {
     $ip = $_SERVER['REMOTE_ADDR'];
+} else {
+    $ip = $_GET['myip'];
+}
 
 // Validate IP address
 if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4))
     die('Invalid IP address');
 
 // Get and validate ttl
-$ttl = $_GET['ttl'];
+if (empty($_GET['ttl'])) {
+    $ttl = '';
+} else {
+    $ttl = $_GET['ttl'];
+}
+
 if (!is_numeric($ttl) || $ttl < 60)
     $ttl = 300;
 

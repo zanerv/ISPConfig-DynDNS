@@ -79,16 +79,16 @@ if (!($_SERVER['PHP_AUTH_USER'] == $php_auth_user && $_SERVER['PHP_AUTH_PW'] == 
 // Make sure a host was specified
 if (empty($_GET['hostname']))
     die('Must specify host');
-$host = $_GET["hostname"];
+$host = htmlspecialchars($_GET["hostname"],  ENT_QUOTES, 'UTF-8');
 
 if (in_array($host, $exceptions))
     die('Must specify a valid host');
 
 // Use server value for IP if none was specified
 if (empty($_GET['myip'])) {
-    $ip = $_SERVER['REMOTE_ADDR'];
+    $ip = htmlspecialchars($_SERVER['REMOTE_ADDR'],  ENT_QUOTES, 'UTF-8');
 } else {
-    $ip = $_GET['myip'];
+    $ip = htmlspecialchars($_GET['myip'],  ENT_QUOTES, 'UTF-8');
 }
 
 // Validate IP address
